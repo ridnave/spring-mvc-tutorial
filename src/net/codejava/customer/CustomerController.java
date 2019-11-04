@@ -38,4 +38,12 @@ public class CustomerController {
         customerService.save(customer);
         return "redirect:/";
     }
+
+    @RequestMapping("/edit")
+    public ModelAndView editCustomerForm(@RequestParam long id) {
+        ModelAndView mav = new ModelAndView("edit_customer");
+        Customer customer = customerService.get(id);
+        mav.addObject("customer", customer); 
+        return mav;
+    }
 }
