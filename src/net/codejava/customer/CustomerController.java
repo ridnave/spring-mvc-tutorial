@@ -25,4 +25,17 @@ public class CustomerController {
         mav.addObject("listCustomer", listCustomer);
         return mav;
     }
+
+    @RequestMapping("/new")
+        public String newCustomerForm(Map<String, Object> model) {
+        Customer customer = new Customer();
+        model.put("customer", customer);
+        return "new_customer";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+        public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+        customerService.save(customer);
+        return "redirect:/";
+    }
 }
