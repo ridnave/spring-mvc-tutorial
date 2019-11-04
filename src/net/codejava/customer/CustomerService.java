@@ -28,4 +28,8 @@ public class CustomerService {
     public void delete(Long id) {
         repo.deleteById(id);
     } 
+
+    public List<Customer> search(String keyword) {
+        return repo.search(keyword);
+    }
 }
